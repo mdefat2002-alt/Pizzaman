@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Card for Nehaa</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to bottom right, #ff9aa2, #ffb7b2, #ffdac1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    position: relative;
+  }
+
+  h1, h2 {
+    margin-bottom: 20px;
+  }
+
+  button {
+    background: #ff6f91;
+    border: none;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .heart {
+    color: #ff6f91;
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card" id="page1">
+  <h1>Hi Nehaa <span class="heart">❤️</span></h1>
+  <p>I'm going to ask you a very important question, but before I do, you need to surpass these 3 questions.  
+  Also, I hope you had an amazing fucking day, you awesome ray of fuckery fucking sunshine <span class="heart">💖</span></p>
+  <button onclick="nextPage(2)">Start</button>
+</div>
+
+<div class="card hidden" id="page2">
+  <h2>Question 1:</h2>
+  <p>What's my favorite feature about you?</p>
+  <button onclick="checkAnswer(1,'E')">A. Eyes</button>
+  <button onclick="checkAnswer(1,'E')">B. Forehead</button>
+  <button onclick="checkAnswer(1,'E')">C. Smile</button>
+  <button onclick="checkAnswer(1,'E')">D. Lips</button>
+  <button onclick="checkAnswer(1,'E')">E. All of the above</button>
+</div>
+
+<div class="card hidden" id="page3">
+  <h2>Question 2:</h2>
+  <p>What movie did we see when we first hung out?</p>
+  <button onclick="checkAnswer(2,'D')">A. Spiderman</button>
+  <button onclick="checkAnswer(2,'D')">B. Get Out</button>
+  <button onclick="checkAnswer(2,'D')">C. Saaiyara</button>
+  <button onclick="checkAnswer(2,'D')">D. Final Destination Bloodline</button>
+</div>
+
+<div class="card hidden" id="page4">
+  <h2>Question 3:</h2>
+  <p>What was the first nickname I came up with for you?</p>
+  <button onclick="checkAnswer(3,'A')">A. Nunu</button>
+  <button onclick="checkAnswer(3,'A')">B. Chasmish</button>
+  <button onclick="checkAnswer(3,'A')">C. 4 eyes</button>
+  <button onclick="checkAnswer(3,'A')">D. Ghanji chudail</button>
+</div>
+
+<div class="card hidden" id="page5">
+  <h2>Final Question <span class="heart">❤️</span></h2>
+  <p>Will you be my Valentine?</p>
+  <button onclick="valentineYes()">Yes <span class="heart">💖</span></button>
+  <button id="noBtn">No <span class="heart">💔</span></button>
+</div>
+
+<div class="card hidden" id="page6">
+  <h1>From one to another, you made my day RAURARAWARAWAWAWAW! <span class="heart">💖💖💖</span></h1>
+  <p>btw, I'm in your closet 😏</p>
+</div>
+
+<script>
+  let currentPage = 1;
+
+  function nextPage(page) {
+    document.getElementById('page' + currentPage).classList.add('hidden');
+    currentPage = page;
+    document.getElementById('page' + currentPage).classList.remove('hidden');
+  }
+
+  function checkAnswer(question, correct) {
+    alert('Correct! 🎉');
+    if(question === 1) nextPage(3);
+    else if(question === 2) nextPage(4);
+    else if(question === 3) nextPage(5);
+  }
+
+  // Floating "No" button logic
+  const noBtn = document.getElementById('noBtn');
+  noBtn.addEventListener('mouseenter', () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  });
+
+  function valentineYes() {
+    nextPage(6);
+  }
+</script>
+
+</body>
+</html>
